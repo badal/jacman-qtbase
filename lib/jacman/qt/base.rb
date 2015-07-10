@@ -6,7 +6,7 @@
 #
 # (c) Michel Demazure <michel@demazure.com>
 
-require 'thread' unless Utils.on_mac?
+require 'thread' unless JacintheManagement::Utils.on_mac?
 require 'Qt'
 
 require_relative('base/common_main.rb')
