@@ -7,9 +7,9 @@
 # (c) Michel Demazure & Kenji Lefevre
 
 module JacintheManagement
-  BASE_VERSION = '1.0.0'
-
-  COPYRIGHT = "\u00A9 Michel Demazure"
+  module GuiQt
+    BASE_VERSION = '1.1.0'
+  end
 end
 
-puts JacintheManagement::BASE_VERSION if __FILE__ == $PROGRAM_NAME
+puts JacintheManagement::GuiQt::BASE_VERSION  if __FILE__ == $PROGRAM_NAME
