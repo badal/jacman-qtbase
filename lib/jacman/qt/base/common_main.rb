@@ -34,16 +34,15 @@ module JacintheManagement
       end
 
       # A new instance
-      def initialize(central_widget)
+      def initialize(central)
         super()
         install_event_filter(self)
         @active = true
         self.window_icon = Icons.from_file('Board-11-Flowers-icon.png')
-        self.window_title = central_widget.subtitle
-        @central_widget = central_widget
+        self.window_title = central.subtitle
+        self.central_widget = central
+        set_geometry(*central.geometry) if central.geometry
         @status = build_status_bar
-        self.central_widget = @central_widget
-        set_geometry(*central_widget.geometry) if central_widget.geometry
         update_values
       end
 
@@ -53,7 +52,7 @@ module JacintheManagement
         status = statusBar
         about = Qt::PushButton.new('A propos...')
         help = Qt::PushButton.new(Icons.icon('standardbutton-help'), 'Aide')
-        @central_widget.extend_status(status)
+        central_widget.extend_status(status)
         status.addPermanentWidget(help)
         status.addPermanentWidget(about)
         status.connect(about, SIGNAL(:clicked), self, SLOT(:about))
@@ -64,8 +63,8 @@ module JacintheManagement
       # Start the application
       def self.run(central_widget_class)
         application = Qt::Application.new(ARGV)
-        central_widget = central_widget_class.new
-        new(central_widget).show
+        central = central_widget_class.new
+        new(central).show
         application.exec
       rescue => error
         JacintheManagement.err(error)
@@ -73,20 +72,20 @@ module JacintheManagement
 
       # Slot : open the about dialog
       def about
-        text = @central_widget.about.join("\n")
+        text = central_widget.about.join("\n")
         Qt::MessageBox.about(self, 'Jacinthe Management', text)
       end
 
       # Slot: open the help dialog
       def help
-        @central_widget.help
+        central_widget.help
       end
 
       # Slot: update the clock and refresh the central widget
       def update_values
         if @active
           @status.showMessage Time.now.strftime('%F   %T')
-          @central_widget.update_values
+          central_widget.update_values
         end
         Qt::Timer.singleShot(1000, self, SLOT(:update_values))
       end
