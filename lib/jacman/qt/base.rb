@@ -10,6 +10,7 @@ require 'thread' unless JacintheManagement::Utils.on_mac?
 require 'Qt'
 
 require_relative('base/common_main.rb')
+require_relative('base/gui_elements.rb')
 require_relative 'base/icons.rb'
 require_relative('base/log.rb')
 require_relative('base/central_widget.rb')

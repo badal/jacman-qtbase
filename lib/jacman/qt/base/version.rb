@@ -8,7 +8,7 @@
 
 module JacintheManagement
   module GuiQt
-    BASE_VERSION = '1.2.0'
+    BASE_VERSION = '1.2.1'
   end
 end
 
