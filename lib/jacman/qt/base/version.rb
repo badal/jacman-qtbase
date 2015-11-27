@@ -8,8 +8,8 @@
 
 module JacintheManagement
   module GuiQt
-    BASE_VERSION = '1.2.1'
+    BASE_VERSION = '1.3.0'
   end
 end
 
-puts JacintheManagement::GuiQt::BASE_VERSION  if __FILE__ == $PROGRAM_NAME
+puts JacintheManagement::GuiQt::BASE_VERSION if __FILE__ == $PROGRAM_NAME

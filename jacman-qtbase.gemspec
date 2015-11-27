@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
   s.license = 'MIT'
   s.files = %w(LICENSE README.md HISTORY.md MANIFEST Rakefile) + Dir.glob('{lib,spec}/**/*')
   s.require_path = 'lib'
+  s.add_dependency('qtbindings', ['>=0'])
 end
