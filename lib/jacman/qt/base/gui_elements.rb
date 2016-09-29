@@ -42,7 +42,7 @@ module JacintheManagement
       end
 
       # Fix the frame color
-      # @param [String] color hes string for color
+      # @param [String] color hex string for color
       def set_color(color)
         palette = Qt::Palette.new
         palette.set_color(background_role, Qt::Color.new(color))
